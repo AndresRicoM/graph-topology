@@ -3,7 +3,31 @@ import numpy as np
 import math
 import random
 
-#Simulate Data
+def adjacent_pop(pop_size, max_encounters):
+    complete = []
+    for pop in range(0,pop_size):
+        encounters = random.randint(1,max_encounters)
+        indiv_list = []
+        for enc in range(0, encounters):
+            prox = random.randint(0, pop_size-1)
+            if prox != pop:
+                indiv_list.append(prox)
+        complete.append(indiv_list)
+    print(complete)
+    return complete
+
+def adjacent_mat(population): #Creates Adjacent Matric Structure From Adjacent lists
+    matrix = np.zeros((len(population), len(population)))
+    for list in range(0,len(population)):
+        for element in range(0,len(population[list])):
+            matrix[list,(population[list][element])] = True
+            matrix[(population[list][element]),list] = True
+    return matrix
+
+def simple_pop(pop_size, encounters):
+    complete_pop = np.zeros((encounters + 1, pop_size))
+    complete_pop = np.arange(1, pop_size + 1,1)
+
 def sim_population(pop_size, encounters): #Takes as argument population size and encounters.
     full_history = np.zeros((encounters, pop_size * 2))
     population = np.arange(1,pop_size + 1, .5)
@@ -20,4 +44,7 @@ def sim_history(encounters, max_id): #Takes as argument encounters.
         history[rows, 1] = round(random.randint(1,max_id))#Sequential Time Stamp
     return history
 
-print(sim_population(685094, 23))
+def rand_infect(id, prob): #Randomly infects population individuals.
+    infection_vect = np.zeros((1, ))
+
+print(adjacent_mat(adjacent_pop(1000,23)))
