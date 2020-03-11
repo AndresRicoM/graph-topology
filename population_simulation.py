@@ -47,4 +47,4 @@ def sim_history(encounters, max_id): #Takes as argument encounters.
 def rand_infect(id, prob): #Randomly infects population individuals.
     infection_vect = np.zeros((1, ))
 
-print(adjacent_mat(adjacent_pop(1000,23)))
+print(adjacent_mat(adjacent_pop(60000,23)))
