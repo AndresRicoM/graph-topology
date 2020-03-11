@@ -23,7 +23,7 @@ def adjacent_mat(population): #Creates Adjacent Matrix Structure From Adjacent l
             matrix[(population[list][element]),list] = True
     return matrix
 
-def infect(population, probability):
+def infect_2d(population, probability):
     inf = []
     non_inf = []
     for element in range(0,len(population)):
@@ -34,6 +34,15 @@ def infect(population, probability):
     complete_inf = []
     complete_inf.append(inf)
     complete_inf.append(non_inf)
+    return complete_inf
+
+def infect_vect(population, probability):
+    complete_inf = []
+    for nodes in range(0, len(population)):
+        if random.random() > probability:
+	        complete_inf.append(1)
+        else:
+            complete_inf.append(0)
     return complete_inf
 
 def simple_pop(pop_size, encounters):
@@ -55,5 +64,3 @@ def sim_history(encounters, max_id): #Takes as argument encounters.
     for rows in range(0, history.shape[0]):
         history[rows, 1] = round(random.randint(1,max_id))#Sequential Time Stamp
     return history
-
-#print(infect(adjacent_pop(5, 2), .7))
