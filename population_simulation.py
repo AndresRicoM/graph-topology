@@ -6,23 +6,35 @@ import random
 def adjacent_pop(pop_size, max_encounters):
     complete = []
     for pop in range(0,pop_size):
-        encounters = random.randint(1,max_encounters)
+        encounters = random.randint(0,max_encounters)
         indiv_list = []
         for enc in range(0, encounters):
             prox = random.randint(0, pop_size-1)
             if prox != pop:
                 indiv_list.append(prox)
         complete.append(indiv_list)
-    print(complete)
     return complete
 
-def adjacent_mat(population): #Creates Adjacent Matric Structure From Adjacent lists
+def adjacent_mat(population): #Creates Adjacent Matrix Structure From Adjacent lists
     matrix = np.zeros((len(population), len(population)))
     for list in range(0,len(population)):
         for element in range(0,len(population[list])):
             matrix[list,(population[list][element])] = True
             matrix[(population[list][element]),list] = True
     return matrix
+
+def infect(population, probability):
+    inf = []
+    non_inf = []
+    for element in range(0,len(population)):
+        if random.random() > probability:
+            inf.append(element)
+        else:
+            non_inf.append(element)
+    complete_inf = []
+    complete_inf.append(inf)
+    complete_inf.append(non_inf)
+    return complete_inf
 
 def simple_pop(pop_size, encounters):
     complete_pop = np.zeros((encounters + 1, pop_size))
@@ -44,7 +56,4 @@ def sim_history(encounters, max_id): #Takes as argument encounters.
         history[rows, 1] = round(random.randint(1,max_id))#Sequential Time Stamp
     return history
 
-def rand_infect(id, prob): #Randomly infects population individuals.
-    infection_vect = np.zeros((1, ))
-
-print(adjacent_mat(adjacent_pop(60000,23)))
+#print(infect(adjacent_pop(5, 2), .7))
