@@ -1,2 +1,2 @@
-Topological analysis of infections. 
+Topological analysis of infections for NFC beacon infection tracking tags. 
 
