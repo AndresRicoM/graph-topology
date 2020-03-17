@@ -24,14 +24,11 @@ def d3_graph_net(population, probability):
 	graph = nx.DiGraph(population)
 	fig = plt.figure()
 	pos = nx.random_layout(graph, dim=3)
+	#pos = nx.spring_layout(graph, dim=3, k=50)
 	xyz = np.array([pos[v] for v in sorted(graph)])
 	#scalars = np.zeros(len(population))
-	scalars = infect_vect(population, probability)
-	"""
-	for nodes in range(0, len(scalars)):
-		if random.random() > probability:
-			scalars[nodes] = 1
-	"""
+	scalars = binary_vect(population, probability)
+
 	print(scalars)
 	mlab.figure(1, bgcolor=(0, 0, 0))
 	mlab.clf()
@@ -48,4 +45,4 @@ def d3_graph_net(population, probability):
 
 	mlab.show()
 
-d3_graph_net(adjacent_mat(adjacent_pop(50,10)), .85)
+d3_graph_net(adjacent_mat(adjacent_pop(80,23)), .85)

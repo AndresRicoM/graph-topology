@@ -3,13 +3,13 @@ import numpy as np
 import math
 import random
 
-def adjacent_pop(pop_size, max_encounters):
+def adjacent_list(list_size, max_encounters):
     complete = []
-    for pop in range(0,pop_size):
+    for pop in range(0,list_size):
         encounters = random.randint(0,max_encounters)
         indiv_list = []
         for enc in range(0, encounters):
-            prox = random.randint(0, pop_size-1)
+            prox = random.randint(0, list_size-1)
             if prox != pop:
                 indiv_list.append(prox)
         complete.append(indiv_list)
@@ -36,7 +36,7 @@ def infect_2d(population, probability):
     complete_inf.append(non_inf)
     return complete_inf
 
-def infect_vect(population, probability):
+def binary_vect(population, probability):
     complete_inf = []
     for nodes in range(0, len(population)):
         if random.random() > probability:
