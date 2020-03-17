@@ -1,2 +1,1 @@
-Topological analysis of infections for NFC beacon infection tracking tags. 
-
+Topological analysis and search functions for graph nodes. 
