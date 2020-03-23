@@ -45,4 +45,4 @@ def d3_graph_net(population, probability):
 
 	mlab.show()
 
-d3_graph_net(adjacent_mat(adjacent_pop(80,23)), .85)
+d3_graph_net(adjacent_mat(adjacent_list(60,2)), .85)
