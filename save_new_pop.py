@@ -19,7 +19,8 @@ if __name__ == '__main__':
     filename = input()
     filename = filename + '.txt'
 
-    file = open(main_path + '/populations/' + filename, 'w+')
+    list_file = open(main_path + '/populations/lists/' + filename, 'w+')
+    mat_file = open(main_path + '/populations/matrices/' + filename, 'w+')
 
     print('What population size do you want?')
     population_size = int(input())
@@ -29,8 +30,9 @@ if __name__ == '__main__':
 
     print('Simulating Population')
     population = adjacent_list(population_size, possible_ecnounters)
-    print(population)
     population_mat = adjacent_mat(population)
 
     for item in population:
-        file.write("%s\n" % item)
+        list_file.write("%s\n" % item)
+
+    np.savetxt(mat_file, population_mat, delimiter=',')
