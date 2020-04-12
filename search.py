@@ -7,6 +7,10 @@ def is_goal(current, goal):
         return False
 
 
+def bingo(comparable_mat, self):
+    for indiv in range(0, len(comparable_mat)):
+        if self == comparable_mat[]
+
 def dfs(population, infection, my_node): #Takes in adjacent matrix, infection vector and node of interest.
     finished = False
     for indiv in range(0, len(infection)):
