@@ -3,6 +3,26 @@ import numpy as np
 import math
 import random
 
+def get_poplist(url):
+    poplist = []
+    # open file and read the content in a list
+    with open(url, 'r') as filehandle:
+        for line in filehandle:
+            # remove linebreak which is the last character of the string
+            currentPlace = line[:-1]
+            # add item to the list
+            poplist.append(currentPlace)
+    return poplist
+
+
+def get_popmat(url):
+    popmat = np.genfromtxt(url, delimiter = ',')
+    return popmat
+
+def get_infectvect(url):
+    infectedvect = np.genfromtxt(url, delimiter = ',')
+    return infectedvect
+
 def adjacent_list(list_size, max_encounters):
     complete = []
     for pop in range(0,list_size):

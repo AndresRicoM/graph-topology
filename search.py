@@ -1,11 +1,18 @@
 #Search Algorithms
 
+def bingo(me, population, infected):
+    if me < len(population):
+        for elems in range(0, len(population[me])):
+            if population[me][elems] in infected:
+                print('Direct Conatct!')
+    else:
+        print("Invalid Input")
+
 def is_goal(current, goal):
     if current == goal:
         return True
     else:
         return False
-
 
 def bingo(comparable_mat, self):
     for indiv in range(0, len(comparable_mat)):
