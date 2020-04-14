@@ -2,26 +2,23 @@
 import numpy as np
 import math
 import random
+import pickle
 
 def get_poplist(url):
-    poplist = []
-    # open file and read the content in a list
-    with open(url, 'r') as filehandle:
-        for line in filehandle:
-            # remove linebreak which is the last character of the string
-            currentPlace = line[:-1]
-            # add item to the list
-            poplist.append(currentPlace)
+    with open(url, "rb") as fp:
+        poplist = pickle.load(fp)
     return poplist
 
 
 def get_popmat(url):
-    popmat = np.genfromtxt(url, delimiter = ',')
-    return popmat
+    with open(url, "rb") as fp:
+        popmat = pickle.load(fp)
+        return popmat
 
 def get_infectvect(url):
-    infectedvect = np.genfromtxt(url, delimiter = ',')
-    return infectedvect
+    with open(url, "rb") as fp:
+        infectedvect = pickle.load(fp)
+        return infectedvect
 
 def adjacent_list(list_size, max_encounters):
     complete = []
@@ -56,13 +53,20 @@ def infect_2d(population, probability):
     complete_inf.append(non_inf)
     return complete_inf
 
-def binary_vect(population, probability):
+def binary_vect(population, probability): #Creates a binary list with boolean infections.
     complete_inf = []
     for nodes in range(0, len(population)):
         if random.random() > probability:
 	        complete_inf.append(1)
         else:
             complete_inf.append(0)
+    return complete_inf
+
+def infected_list(population, probability): #Creates infected list with device id's.
+    complete_inf = []
+    for ind in range(0, len(population)):
+        if random.random() > probability:
+            complete_inf.append(ind)
     return complete_inf
 
 def simple_pop(pop_size, encounters):

@@ -3,12 +3,11 @@ import os
 import numpy as np
 import math
 import random
-import matplotlib.pyplot as plt
-import networkx as nx
 import numpy as np
 import random
 from population_simulation import *
-from mayavi import mlab
+import pickle
+
 
 if __name__ == '__main__':
 
@@ -19,9 +18,9 @@ if __name__ == '__main__':
     filename = input()
     filename = filename + '.txt'
 
-    list_file = open(main_path + '/populations/lists/' + filename, 'w+')
-    mat_file = open(main_path + '/populations/matrices/' + filename, 'w+')
-    infect_file = open(main_path + '/populations/infected/' + filename, 'w+')
+    #list_file = open(main_path + '/populations/lists/' + filename, 'w+')
+    #mat_file = open(main_path + '/populations/matrices/' + filename, 'w+')
+    #infect_file = open(main_path + '/populations/infected/' + filename, 'w+')
 
     print('What population size do you want?')
     population_size = int(input())
@@ -35,8 +34,18 @@ if __name__ == '__main__':
     print('Simulating Population')
     population = adjacent_list(population_size, possible_ecnounters)
     population_mat = adjacent_mat(population)
-    infect_list = binary_vect(population, infect_prob)
+    infect_list = infected_list(population, infect_prob)
 
+    with open(main_path + '/populations/lists/' + filename, "wb") as fp:   #Pickling
+        pickle.dump(population, fp)
+
+    with open(main_path + '/populations/matrices/' + filename, "wb") as fp:   #Pickling
+        pickle.dump(population_mat, fp)
+
+    with open(main_path + '/populations/infected/' + filename, "wb") as fp:   #Pickling
+        pickle.dump(infect_list, fp)
+
+    """
     for item in population:
         list_file.write("%s\n" % item)
 
@@ -44,3 +53,4 @@ if __name__ == '__main__':
         infect_file.write("%s\n" % item)
 
     np.savetxt(mat_file, population_mat, delimiter=',')
+    """
