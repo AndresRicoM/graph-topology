@@ -23,10 +23,13 @@ if __name__ == '__main__':
     list = get_poplist(list_path)
     #mat = get_popmat(mat_path)
     infect = get_infectvect(inf_path)
+    my_list = list[beacon]
 
-    print('Beacon: ', beacon, 'Quarentine: ' , bingo(beacon,list,infect))
+    print(my_list)
 
-    """
+    #print('Beacon: ', beacon, 'Quarentine: ' , bingo(beacon,my_list,infect))
+    #print('Beacon: ', beacon, 'Quarentine: ', dfs(list, infect, beacon ))
+    #Use for revealing desicions for entire popualtion.
     for i in range (0, len(list)):
-        print('Beacon: ', i, 'Quarentine: ' , bingo(i,list,infect))
-    """
+        #print('Beacon: ', i, 'Quarentine: ' , bingo(i,list,infect))
+        print('Beacon: ', i, 'Quarentine: ', dfs(list, infect, i ))
