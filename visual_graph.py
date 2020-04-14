@@ -26,7 +26,7 @@ def d3_graph_net(population, probability):
 	pos = nx.random_layout(graph, dim=3)
 	#pos = nx.spring_layout(graph, dim=3, k=50)
 	xyz = np.array([pos[v] for v in sorted(graph)])
-	#scalars = np.zeros(len(population))
+	#scalars = np.zeros(len(populati583on))
 	scalars = binary_vect(population, probability)
 
 	print(scalars)
