@@ -33,14 +33,14 @@ if __name__ == '__main__':
 
     print('Simulating Population')
     population = adjacent_list(population_size, possible_ecnounters)
-    population_mat = adjacent_mat(population)
+    #population_mat = adjacent_mat(population)
     infect_list = infected_list(population, infect_prob)
 
     with open(main_path + '/populations/lists/' + filename, "wb") as fp:   #Pickling
         pickle.dump(population, fp)
 
-    with open(main_path + '/populations/matrices/' + filename, "wb") as fp:   #Pickling
-        pickle.dump(population_mat, fp)
+    #with open(main_path + '/populations/matrices/' + filename, "wb") as fp:   #Pickling
+    #    pickle.dump(population_mat, fp)
 
     with open(main_path + '/populations/infected/' + filename, "wb") as fp:   #Pickling
         pickle.dump(infect_list, fp)
